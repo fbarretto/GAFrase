@@ -6,9 +6,11 @@ String target;
 int numGenerations = 0;
 float bestFitness;
 int bestPhrase;
+float totalFitness = 0;
 
 void setup() {
-  size(640, 360);
+  frameRate(2000);
+  size(400, 200);
 
   //inicializa a frase objetivo
   target = "to be or not to be";
@@ -21,24 +23,34 @@ void setup() {
 }
 
 void draw() {
-
+  background(0);
 
   bestFitness = population[0].fitness();
   bestPhrase = 0;
-
+  totalFitness = 0;
+  
   // Passo 2: Calcular a função de Fitness
   for (int i = 0; i < population.length; i++) {
-    if (population[i].fitness()>bestFitness) {
-      bestFitness=population[i].fitness;
+    float pFitness = population[i].fitness();
+    totalFitness += pFitness;
+    if (pFitness>bestFitness) {
+      bestFitness=pFitness;
       bestPhrase = i;
       if (bestFitness==1) {
-        exit();
+        noLoop();
       }
     }
   }
 
-  print(numGenerations + " - " + bestFitness + " ");
-  println(population[bestPhrase].getPhrase());
+  textSize(14); 
+  text("Geração: " + numGenerations, 20, 20);
+  text("Melhor Fitness: " + bestFitness, 20, 40);
+  text("Média Fitness: " + totalFitness/population.length, 20, 60);
+  text("População: " + totalPopulation, 20, 80);
+  text("Mutação: " + mutationRate*100 + "%", 20, 100);
+  textSize(20); 
+  text("Melhor: \n" + population[bestPhrase].getPhrase(), 20, 140);
+
   numGenerations++;
 
   // Passo 2a: Listar os pais candidatos

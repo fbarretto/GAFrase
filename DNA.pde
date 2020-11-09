@@ -26,7 +26,12 @@ class DNA {
   //Crossover
   DNA crossover(DNA partner) {
     DNA child = new DNA();
+    //Ponto de recombinação aletório
     int midpoint = int(random(genes.length));
+    
+    //Ponto de recombinação no meio
+    //int midpoint = int(genes.length/2);
+    
     for (int i = 0; i < genes.length; i++) {
       if (i < midpoint) child.genes[i] = genes[i];
       else              child.genes[i] = partner.genes[i];
