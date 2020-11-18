@@ -1,5 +1,18 @@
+//ALTERE OS PARÂMETROS AQUI:
+//Taxa de Mutação:
 float mutationRate = 0.01;
+
+//Tamanho da população:
 int totalPopulation = 150;
+
+//Tipo de crossover
+//1 = aleatório | 2 = 50/50
+int tipoCrossover = 2;
+
+//Tipo de calculo de fitness
+//1 = fitness normalizado | 2 = fitness normalizado ao quadrado
+int tipoFitness = 2;
+
 DNA[] population;
 ArrayList<DNA> matingPool;
 String target;
@@ -58,7 +71,7 @@ void draw() {
 
   for (int i = 0; i < population.length; i++) {
     //Adicionar cada membro "n" vezes de acordo com a sua função de fitness
-    int n = int(population[i].fitness * 100);
+    int n = int(population[i].fitness/bestFitness * 100.0);
     for (int j = 0; j < n; j++) {
       matingPool.add(population[i]);
     }
