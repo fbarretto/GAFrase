@@ -4,7 +4,7 @@
 int totalPopulation = 20;
 
 //Taxa de Mutação:
-float mutationRate = 0.00;
+float mutationRate = 0.01;
 
 //Tipo de crossover
 //1 = aleatório | 2 = 50/50
