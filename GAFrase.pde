@@ -1,9 +1,10 @@
 //ALTERE OS PARÂMETROS AQUI:
-//Taxa de Mutação:
-float mutationRate = 0.00;
 
 //Tamanho da população:
 int totalPopulation = 20;
+
+//Taxa de Mutação:
+float mutationRate = 0.00;
 
 //Tipo de crossover
 //1 = aleatório | 2 = 50/50
